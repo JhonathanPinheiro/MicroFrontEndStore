@@ -7,12 +7,20 @@ module.exports = {
 
     entry: "./src/index.jsx",
 
+    output: {
+        publicPath: "auto",
+        crossOriginLoading: "anonymous"
+    },
+
     resolve: {
         extensions: [".js", ".jsx", ".json"]
     },
 
     devServer: {
-        port: 3000
+        port: 3000,
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        }
     },
 
     module: {
@@ -34,9 +42,11 @@ module.exports = {
     plugins: [
         new ModuleFederationPlugin({
             name: "shell",
+            filename: "remoteEntry.js",
             exposes: {
                 "./eventBus": "./shared/eventBus",
-                "./events": "./shared/events"
+                "./events": "./shared/events",
+                "./store": "./shared/store/globalStore"
             },
             remotes: {
                 products: "products@http://localhost:3001/remoteEntry.js",
@@ -50,7 +60,8 @@ module.exports = {
                 },
                 "react-dom": {
                     singleton: true
-                }
+                },
+                zustand: { singleton: true }
             }
         }),
         new HtmlWebpackPlugin({

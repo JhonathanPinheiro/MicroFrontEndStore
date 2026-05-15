@@ -59,7 +59,8 @@ module.exports = {
         },
         "react-dom": {
           singleton: true
-        }
+        },
+        zustand: { singleton: true }
       }
 
     }),

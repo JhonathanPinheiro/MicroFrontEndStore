@@ -7,7 +7,8 @@ module.exports = {
   entry: "./src/index.jsx",
 
   output: {
-    publicPath: "auto"
+    publicPath: "auto",
+    crossOriginLoading: "anonymous"
   },
 
   resolve: {
@@ -59,7 +60,8 @@ module.exports = {
         },
         "react-dom": {
           singleton: true
-        }
+        },
+        zustand: { singleton: true }
       }
 
     }),
