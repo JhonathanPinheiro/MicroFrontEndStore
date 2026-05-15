@@ -13,6 +13,10 @@ export default function App() {
             <p>Shell application running</p>
 
             <Suspense fallback={<div>Loading...</div>}>
+                <CartApp />
+            </Suspense>
+            
+            <Suspense fallback={<div>Loading...</div>}>
                 <ProfileApp />
             </Suspense>
 
@@ -24,9 +28,6 @@ export default function App() {
                 <AuthApp />
             </Suspense>
 
-            <Suspense fallback={<div>Loading...</div>}>
-                <CartApp />
-            </Suspense>
         </div>
     )
 }

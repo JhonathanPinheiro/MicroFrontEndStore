@@ -49,6 +49,10 @@ module.exports = {
         "./AuthApp": "./src/AuthApp.jsx"
       },
 
+      remotes: {
+        shell: "shell@http://localhost:3000/remoteEntry.js"
+      },
+
       shared: {
         react: {
           singleton: true

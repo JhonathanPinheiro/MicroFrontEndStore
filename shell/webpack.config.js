@@ -34,6 +34,10 @@ module.exports = {
     plugins: [
         new ModuleFederationPlugin({
             name: "shell",
+            exposes: {
+                "./eventBus": "./shared/eventBus",
+                "./events": "./shared/events"
+            },
             remotes: {
                 products: "products@http://localhost:3001/remoteEntry.js",
                 auth: "auth@http://localhost:3002/remoteEntry.js",

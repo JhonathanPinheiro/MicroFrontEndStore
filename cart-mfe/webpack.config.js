@@ -49,6 +49,10 @@ module.exports = {
         "./CartApp": "./src/Cart.jsx"
       },
 
+      remotes: {
+        shell: "shell@http://localhost:3000/remoteEntry.js"
+      },
+
       shared: {
         react: {
           singleton: true
