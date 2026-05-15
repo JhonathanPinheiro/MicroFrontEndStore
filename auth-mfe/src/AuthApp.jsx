@@ -14,21 +14,27 @@ export default function AuthApp() {
   }
 
   return (
-
-    <div style={{ border: "2px solid blue", padding: 20 }}>
-
-      <h2>Auth Microfrontend</h2>
-
+    <div className="mfe-card">
+      <span className="card-label">Autenticação</span>
+      <h2>Fluxo de login</h2>
       {user ? (
-
-        <p>Welcome, {user.name}!</p>
+        <>
+          <p className="card-text">Usuário autenticado e estado compartilhado entre todos os microfrontends.</p>
+          <div className="profile-row">
+            <p className="profile-label">Conectado como</p>
+            <p className="profile-value">{user.name}</p>
+          </div>
+          <div className="profile-row">
+            <p className="profile-label">Função</p>
+            <p className="profile-value">{user.role}</p>
+          </div>
+        </>
       ) : (
-
-        <button onClick={handleLogin}>Login</button>
+        <>
+          <p className="card-text">Clique no botão para simular um login e liberar as ações do carrinho e do perfil.</p>
+          <button className="btn btn-primary" onClick={handleLogin}>Fazer login</button>
+        </>
       )}
-
     </div>
-
   )
-
 }

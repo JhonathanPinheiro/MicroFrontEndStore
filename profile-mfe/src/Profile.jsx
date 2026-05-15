@@ -10,25 +10,25 @@ export default function Profile() {
   }
 
   return (
-
-    <div style={{ border: "2px solid blue", padding: 20 }}>
-
-      <h2>Profile Microfrontend</h2>
-
+    <div className="mfe-card">
+      <span className="card-label">Perfil</span>
+      <h2>Informações do usuário</h2>
       {user ? (
-
-        <div>
-          <p>Name: {user.name}</p>
-          <p>Role: {user.role}</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
+        <>
+          <p className="card-text">O perfil reflete o estado global compartilhado entre todos os microfrontends.</p>
+          <div className="profile-row">
+            <p className="profile-label">Nome</p>
+            <p className="profile-value">{user.name}</p>
+          </div>
+          <div className="profile-row">
+            <p className="profile-label">Função</p>
+            <p className="profile-value">{user.role}</p>
+          </div>
+          <button className="btn btn-secondary" onClick={handleLogout}>Logout</button>
+        </>
       ) : (
-
-        <p>Please log in to see your profile</p>
+        <p className="empty-state">Faça login para visualizar seu perfil.</p>
       )}
-
     </div>
-
   )
-
 }

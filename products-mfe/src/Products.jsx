@@ -9,31 +9,29 @@ const products = [
 ]
 
 export default function Products() {
-
   function handleAddToCart(product) {
     eventBus.emit(EVENTS.ADD_TO_CART, product)
   }
 
   return (
-
-    <div style={{ border: "2px solid blue", padding: 20 }}>
-
-      <h2>Products Microfrontend</h2>
-
-      {products.map(product => (
-
-        <div key={product.id} style={{ marginBottom: 10 }}>
-
-          <h3>{product.name}</h3>
-          <p>Price: ${product.price.toFixed(2)}</p>
-          <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
-
-        </div>
-
-      ))}
-
+    <div className="mfe-card">
+      <span className="card-label">Catálogo</span>
+      <h2>Produtos disponíveis</h2>
+      <p className="card-text">Lista de produtos de exemplo. Adicione itens ao carrinho para ver a comunicação entre microfrontends.</p>
+      <ul className="product-list">
+        {products.map(product => (
+          <li key={product.id} className="product-item">
+            <div>
+              <h3>{product.name}</h3>
+              <p className="product-meta">Preço unitário</p>
+            </div>
+            <div className="actions">
+              <span className="product-price">${product.price.toFixed(2)}</span>
+              <button className="btn btn-primary" onClick={() => handleAddToCart(product)}>Adicionar</button>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
-
   )
-
 }
