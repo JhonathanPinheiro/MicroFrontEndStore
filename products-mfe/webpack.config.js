@@ -5,8 +5,8 @@ module.exports = {
 
   mode: "development",
   entry: "./src/index.jsx",
-  
-    output: {
+
+  output: {
     publicPath: "auto"
   },
 
@@ -16,9 +16,9 @@ module.exports = {
 
   devServer: {
     port: 3001,
-      headers: {
-    "Access-Control-Allow-Origin": "*"
-  }
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    }
   },
 
   module: {
@@ -45,9 +45,9 @@ module.exports = {
 
       filename: "remoteEntry.js",
 
-exposes: {
-  "./Products": "./src/Products.jsx"
-},
+      exposes: {
+        "./Products": "./src/Products.jsx"
+      },
 
       shared: {
         react: {

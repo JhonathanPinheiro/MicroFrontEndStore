@@ -36,6 +36,9 @@ module.exports = {
             name: "shell",
             remotes: {
                 products: "products@http://localhost:3001/remoteEntry.js",
+                auth: "auth@http://localhost:3002/remoteEntry.js",
+                cart: "cart@http://localhost:3003/remoteEntry.js",
+                profile: "profile@http://localhost:3004/remoteEntry.js"
             },
             shared: {
                 react: {
