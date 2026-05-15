@@ -1,39 +1,54 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const { ModuleFederationPlugin } = require("webpack").container
 
 module.exports = {
 
-  mode: "development",
+    mode: "development",
 
-  entry: "./src/index.jsx",
+    entry: "./src/index.jsx",
 
-  resolve: {
-    extensions: [".js", ".jsx", ".json"]
-  },
+    resolve: {
+        extensions: [".js", ".jsx", ".json"]
+    },
 
-  devServer: {
-    port: 3000
-  },
+    devServer: {
+        port: 3000
+    },
 
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
-        options: {
-          presets: [
-            "@babel/preset-env",
-            "@babel/preset-react"
-          ]
-        }
-      }
+    module: {
+        rules: [
+            {
+                test: /\.jsx?$/,
+                loader: "babel-loader",
+                exclude: /node_modules/,
+                options: {
+                    presets: [
+                        "@babel/preset-env",
+                        "@babel/preset-react"
+                    ]
+                }
+            }
+        ]
+    },
+
+    plugins: [
+        new ModuleFederationPlugin({
+            name: "shell",
+            remotes: {
+                products: "products@http://localhost:3001/remoteEntry.js",
+            },
+            shared: {
+                react: {
+                    singleton: true
+                },
+                "react-dom": {
+                    singleton: true
+                }
+            }
+        }),
+        new HtmlWebpackPlugin({
+            template: "./public/index.html"
+        })
     ]
-  },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html"
-    })
-  ]
 
 }
